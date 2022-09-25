@@ -1,0 +1,22 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+# the trigger point for the pipeline
+trigger:
+- main
+
+# the image we will be using for the pipeline
+pool:
+  vmImage: ubuntu-latest
+
+# set up a variable to specify the build configuration
+variables:
+  buildConfiguration: 'Release'
+
+# script task that performs a dotnet build cmd for "Release"
+steps:
+- task: UseDotNet@2
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
