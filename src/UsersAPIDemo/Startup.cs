@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UsersAPIDemo.Repository;
 
 namespace UsersAPIDemo
 {
@@ -18,6 +19,12 @@ namespace UsersAPIDemo
         {
             // register services to enable use of controllers in application
             services.AddControllers();
+
+            // Dependency Injection - register our service: our interface to a specific concrete class(implementation)
+            // We use the service collection (services) to register our IUserAPIRepo with MockUserAPIRepo
+            // AddScoped Method: To do with Service Lifetimes. 
+            //          > For this, a service is created once per client request(connection)
+            services.AddScoped<IUserAPIRepo, MockUserAPIRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
