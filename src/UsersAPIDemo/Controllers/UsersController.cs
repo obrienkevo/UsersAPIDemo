@@ -15,7 +15,7 @@ namespace UsersAPIDemo.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet] // Verb with Route should be unique
+        [HttpGet] // Verb with Route should be unique.
         public ActionResult<IEnumerable<User>> GetAllUsers()
         {
             //return new string[] {"test kob"};
